@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
-import{HttpClient, HttpParams} from '@angular/common/http'
-import { Observable, delay } from "rxjs";
+import{HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http'
+import { Observable, catchError, delay, throwError } from "rxjs";
 import { IProduct } from "../models/product";
+import { ErrorService } from "./error.service";
 
 @Injectable({
   providedIn: 'root'//для регистрации сервиса в корневом модуле
@@ -9,11 +10,14 @@ import { IProduct } from "../models/product";
 
 
 export class ProductsService {
-  constructor(private http: HttpClient){
+  constructor(
+    private http: HttpClient,
+    private errorService: ErrorService
+    ){
   }
 
   getAll(): Observable<IProduct[]>{
-    return this.http.get<IProduct[]>('https://fakestoreapi.com/products', {
+    return this.http.get<IProduct[]>('https://fakestoreapi.com/products1', {
 
     //лимит на получаемое колличество товаров
 
@@ -27,7 +31,15 @@ export class ProductsService {
         fromObject: {limit: 10}
       })
     }).pipe(
-      delay(2000)//искуственная задержка имитации загрузки данных на 2 секунды
+      delay(2000),//искуственная задержка имитации загрузки данных на 2 секунды
+      catchError(this.errorHandler)
     )
   }
+  private errorHandler(error: HttpErrorResponse){
+    this.errorService.handle(error.message)
+    return throwError(()=> error.message)
+
+  }
+
+
 }
