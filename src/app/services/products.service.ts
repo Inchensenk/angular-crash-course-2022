@@ -32,7 +32,7 @@ export class ProductsService {
       })
     }).pipe(
       delay(2000),//искуственная задержка имитации загрузки данных на 2 секунды
-      catchError(this.errorHandler)
+      catchError(this.errorHandler.bind(this))
     )
   }
   private errorHandler(error: HttpErrorResponse){
