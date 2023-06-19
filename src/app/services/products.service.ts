@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import{HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http'
-import { Observable, catchError, delay, throwError } from "rxjs";
+import { Observable, catchError, delay, retry, throwError } from "rxjs";
 import { IProduct } from "../models/product";
 import { ErrorService } from "./error.service";
 
@@ -17,7 +17,7 @@ export class ProductsService {
   }
 
   getAll(): Observable<IProduct[]>{
-    return this.http.get<IProduct[]>('https://fakestoreapi.com/products1', {
+    return this.http.get<IProduct[]>('https://fakestoreapi.com/products', {
 
     //лимит на получаемое колличество товаров
 
@@ -31,7 +31,8 @@ export class ProductsService {
         fromObject: {limit: 10}
       })
     }).pipe(
-      delay(2000),//искуственная задержка имитации загрузки данных на 2 секунды
+      delay(200),//искуственная задержка имитации загрузки данных на 2 секунды
+      retry(2),
       catchError(this.errorHandler.bind(this))
     )
   }

@@ -18,6 +18,8 @@ export class AppComponent implements OnInit{
 
   loading = false
 
+  term = ''
+
   constructor(private productsService: ProductsService){
 
   }
