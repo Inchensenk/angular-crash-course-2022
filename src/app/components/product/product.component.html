@@ -16,6 +16,6 @@
 
   <div *ngIf="details">
     <p>{{product.description}}</p>
-    <p>Rate: {{product.rating.rate}}</p>
+    <p>Rate: <span [ngStyle]="{fontWeight: 'bold'}">{{product.rating.rate | number: '1.2-4'}}</span></p>
   </div>
 </div>
