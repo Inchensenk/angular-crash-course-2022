@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { GlobalErrorComponent } from './components/global-error/global-error.component';
 import { FormsModule } from '@angular/forms';
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
+import { ModalComponent } from './components/modal/modal.component';
+import { CreateProdductComponent } from './components/create-prodduct/create-prodduct.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { FilterProductsPipe } from './pipes/filter-products.pipe';
     AppComponent,
     ProductComponent,
     GlobalErrorComponent,
-    FilterProductsPipe
+    FilterProductsPipe,
+    ModalComponent,
+    CreateProdductComponent
   ],
   imports: [
     BrowserModule,
