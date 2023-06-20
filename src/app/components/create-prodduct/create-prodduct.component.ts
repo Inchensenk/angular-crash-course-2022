@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './create-prodduct.component.html',
   styleUrls: ['./create-prodduct.component.scss']
 })
-export class CreateProdductComponent{
+
+
+
+export class CreateProdductComponent implements OnInit{
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
 
   form = new FormGroup({
     title: new FormControl<string>('',[
@@ -18,9 +25,5 @@ export class CreateProdductComponent{
   submit(){
     console.log(this.form.value)
   }
-
-
-
-
 
 }
