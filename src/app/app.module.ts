@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterProductsPipe } from './pipes/filter-products.pipe';
 import { ModalComponent } from './components/modal/modal.component';
 import { CreateProdductComponent } from './components/create-prodduct/create-prodduct.component';
+import FocusDirective from './directives/focus.directive';
 
 
 
@@ -20,7 +21,8 @@ import { CreateProdductComponent } from './components/create-prodduct/create-pro
     GlobalErrorComponent,
     FilterProductsPipe,
     ModalComponent,
-    CreateProdductComponent
+    CreateProdductComponent,
+    FocusDirective
 
   ],
   imports: [
