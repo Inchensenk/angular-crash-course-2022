@@ -9,36 +9,7 @@ import { ModalService } from './services/modal.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
-
-  title = 'Angular application';
-
-  //products: IProduct[] = []
-
-  //products$: Observable<IProduct[]>
-
-  loading = false
-
-  term = ''
-
-  constructor(
-    public productsService: ProductsService,
-    public modalService: ModalService){
-
-  }
-
-  ngOnInit(): void {
-
-    this.loading = true
-
-    /*this.products$ = this.productsService.getAll().pipe(
-      tap(()=> this.loading = false)
-    )*/
-
-    this.productsService.getAll().subscribe((products) => {
-      this.loading = false
-    })
+export class AppComponent{
 
 
-  }
 }
