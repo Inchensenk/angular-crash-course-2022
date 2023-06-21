@@ -10,9 +10,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 export class CreateProdductComponent implements OnInit{
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
+
 
 
   form = new FormGroup({
@@ -22,8 +21,16 @@ export class CreateProdductComponent implements OnInit{
     ])
   })
 
+  get title(){
+    return this.form.controls.title as FormControl
+  }
+
   submit(){
+    console.log(this.title)
     console.log(this.form.value)
   }
 
+  ngOnInit(): void {
+
+  }
 }
